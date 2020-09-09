@@ -1,4 +1,5 @@
-import pygame
+import pygame,os
+os.environ['SDL_VIDEO_CENTERED'] = '1'
 pygame.init()
 iteration = int(input('Enter iteration: '))  
 length = int(input('Enter length of each segment: '))
@@ -20,11 +21,11 @@ new = old
 
 cycle = 1
   
- 
+totalCount = 0
 while cycle<iteration: 
     
     new = (old) + (r)  
-     
+    
     old = old[::-1]  
     count = 0
     for char in range(0, len(old)):  
@@ -40,17 +41,25 @@ while cycle<iteration:
         count += 1
     new = (new) + (old)  
   
-
+    totalCount += count
+    print("\n"*50+str(totalCount)+" Iterations completed.")
     old = new  
+    """
     with open("Save",'a') as fish:
         fish.write("Generation "+str(cycle)+": "+new+'\n')
-    print("Cycle complete ("+str(cycle)+"/"+str(iteration)+")")
+    """
     cycle = cycle + 1
-
 position = (startx,starty)
 facing = 1
 targetPos = (0,0)
-for char in range(0, len(new)):  
+for char in range(0, len(new)):
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONUP:
+            None
+        elif event.type == pygame.QUIT:
+            pygame.quit()
+            break
+    pygame.time.wait(1)
     if new[char] == (r):
         print("Right") 
         if facing == 1:# + y
@@ -88,4 +97,10 @@ for char in range(0, len(new)):
 
         
     pygame.display.flip()
-input()
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONUP:
+            None
+        elif event.type == pygame.QUIT:
+            pygame.quit()
+            break
