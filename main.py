@@ -26,7 +26,7 @@ while cycle<iteration:
     new = (old) + (r)  
      
     old = old[::-1]  
-    
+    count = 0
     for char in range(0, len(old)):  
          
         if old[char] == r:  
@@ -36,16 +36,16 @@ while cycle<iteration:
         elif old[char] == l:  
             
             old = (old[:char]) + (r) + (old[char + 1:])  
-
+        print(str(count)+"/"+str(len(old))+" iterations of "+str(cycle)+" Complete")
+        count += 1
     new = (new) + (old)  
   
 
     old = new  
-  
-    print("Cycle complete, "+"("+str(cycle)+"/"+str(iteration)+")")
+    with open("Save",'a') as fish:
+        fish.write("Generation "+str(cycle)+": "+new+'\n')
+    print("Cycle complete ("+str(cycle)+"/"+str(iteration)+")")
     cycle = cycle + 1
-
-
 
 position = (startx,starty)
 facing = 1
@@ -88,4 +88,4 @@ for char in range(0, len(new)):
 
         
     pygame.display.flip()
-input("Press enter too end")
+input()
