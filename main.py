@@ -13,7 +13,7 @@ thickness = int(input("How thick do you want your lines? "))
 r = 'r' 
 l = 'l'
   
-old = r 
+old = [r] 
 new = old 
 
   
@@ -23,22 +23,25 @@ cycle = 1
 totalCount = 0
 while cycle<iteration: 
     
-    new = (old) + (r)  
+    new = old
+    new.append(r)
     
-    old = old[::-1]  
+    old.reverse()
     count = 0
     for char in range(0, len(old)):  
          
         if old[char] == r:  
-             
-            old = (old[:char])+ (l) + (old[char + 1:]) 
+            old.insert(char + 1, l) 
+
         
         elif old[char] == l:  
             
-            old = (old[:char]) + (r) + (old[char + 1:])  
+           old.insert(char + 1, r) 
         print(str(count)+"/"+str(len(old))+" iterations of "+str(cycle)+" Complete")
         count += 1
-    new = (new) + (old)  
+        
+    for x in old:
+        new.append(x)
   
     totalCount += count
     print("\n"*50+str(totalCount)+" Iterations completed.")
