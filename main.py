@@ -1,15 +1,18 @@
 import pygame,os
+from pygame.locals import *
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 pygame.init()
 iteration = int(input('Enter iteration: '))  
 length = int(input('Enter length of each segment: '))
-width = int(input('How wide do you want the screen to be? '))
-height = int(input("How tall do you want the screen to be? "))
 
-startx = int(input('What x pos do you want the fractal to start at? '))
-starty = int(input("What y pos do you want the fractal to start at? "))
+
 thickness = int(input("How thick do you want your lines? "))
-window = screen = pygame.display.set_mode((width,height))
+
+window = pygame.display.set_mode((0,0),RESIZABLE)
+pygame.display.toggle_fullscreen
+startx,starty = pygame.display.get_surface().get_size() 
+startx /= 2
+starty /= 2
 
 r = 'r' 
 l = 'l'
@@ -53,6 +56,7 @@ position = (startx,starty)
 facing = 1
 targetPos = (0,0)
 for char in range(0, len(new)):
+    pygame.event.pump()
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONUP:
             None
@@ -97,10 +101,12 @@ for char in range(0, len(new)):
 
         
     pygame.display.flip()
-while True:
+done = False
+while not done:
+    pygame.event.pump()
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONUP:
             None
         elif event.type == pygame.QUIT:
             pygame.quit()
-            break
+            done = True
