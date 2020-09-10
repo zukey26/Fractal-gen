@@ -12,3 +12,5 @@ https://www.python.org/downloads/
 
 
 If pip is not working try to navigate to where pip is installed and run it there.
+
+To run the program go to the command prompt and navigate to where you installed the program then run py main.py
