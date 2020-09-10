@@ -8,11 +8,7 @@ length = int(input('Enter length of each segment: '))
 
 thickness = int(input("How thick do you want your lines? "))
 
-window = pygame.display.set_mode((0,0),RESIZABLE)
-pygame.display.toggle_fullscreen
-startx,starty = pygame.display.get_surface().get_size() 
-startx /= 2
-starty /= 2
+
 
 r = 'r' 
 l = 'l'
@@ -52,6 +48,12 @@ while cycle<iteration:
         fish.write("Generation "+str(cycle)+": "+new+'\n')
     """
     cycle = cycle + 1
+window = pygame.display.set_mode((0,0),RESIZABLE)
+pygame.display.toggle_fullscreen
+startx,starty = pygame.display.get_surface().get_size() 
+startx /= 2
+starty /= 2
+
 position = (startx,starty)
 facing = 1
 targetPos = (0,0)
