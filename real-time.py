@@ -40,8 +40,14 @@ while cycle<iteration:
         print(str(count)+"/"+str(len(old))+" iterations of "+str(cycle)+" Complete")
         count += 1
         
+<<<<<<< Updated upstream:main.py
     for x in old:
         new.append(x)
+=======
+    for i in range(0, len(old)):
+        new.append(old[i])
+        print(len(old))
+>>>>>>> Stashed changes:real-time.py
   
     totalCount += count
     print("\n"*50+str(totalCount)+" Iterations completed.")
@@ -114,4 +120,8 @@ while not done:
             None
         elif event.type == pygame.QUIT:
             pygame.quit()
+<<<<<<< Updated upstream:main.py
             done = True
+=======
+            done = True
+>>>>>>> Stashed changes:real-time.py
