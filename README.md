@@ -1,7 +1,7 @@
 # Fractal-gen
 
 
-This is a program I wrote to create the dragon fractal in python
+This is a program ~~I wrote~~ *we* wrote to create the dragon fractal in python
 
 To run this program requires the python interpreter and pygame
 
