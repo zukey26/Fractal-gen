@@ -12,12 +12,15 @@ thickness = 1
 
 r = "r"
 l = "l"
+new = list()
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 pygame.init()
 
-with open(f"save/{iterations}", "r") as fish:
+
+with open(f"save/{iterations}.json", "r") as fish:
     new = json.load(fish)["iterations"]
+
 
 window = screen = pygame.display.set_mode((width, height))
 
@@ -69,7 +72,7 @@ for char in range(0, len(new)):
     elif facing == 4:
         targetPos = (position[0]-length,position[1])
     print(position,targetPos)
-    pygame.draw.line(window,(90,90,0),position,targetPos,thickness)
+    pygame.draw.line(window,(255,255,255),position,targetPos,thickness)
     position = targetPos
 
 
